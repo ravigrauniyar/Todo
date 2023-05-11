@@ -5,3 +5,4 @@ db.sqlite3
 manage.py
 bizDirEnv/
 requirements.txt
+__init__.py
