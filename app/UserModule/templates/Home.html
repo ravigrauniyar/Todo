@@ -1,0 +1,25 @@
+{% extends 'parent_temp.html' %}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block body %}
+<div class="loginForm w-25 d-flex">
+    <form class="p-3" action="/Login" method="post">
+        {% csrf_token %}
+        <h1 class="my-4">User Login</h1>
+        <div class="form-outline mb-4">
+            <label for="form1Example1">Username</label>
+            {{loginForm.username}}
+        </div>
+
+        <div class="form-outline mb-4">
+            <label for="form1Example2">Password</label>
+            {{ loginForm.password }}
+        </div>
+        <p>{{ invalidMsg }}</p>
+        <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+    </form>
+</div>
+{% endblock %}
