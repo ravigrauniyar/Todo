@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="todo-container">
+  <h1>Delete Task</h1>
+  <p>Are you sure you want to delete "{{ object.title }}"?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary form-btn">Yes, delete it</button>
+    <a href="{% url 'task_list' %}">
+      <button type="button" class="btn btn-primary">No, take me back</button>
+    </a>
+  </form>
+</div>
+{% endblock %}

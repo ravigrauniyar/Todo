@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block body %}
+<div class="todo-container">
+    {% if not tasks %}
+    <h3>No Activities in Todo Yet.</h3>
+    {% else %}
+    {% for activity in tasks %}
+    <div class="todo">
+        <h2>{{ activity.title }}</h2>
+        <div class="todo-header">
+            <div>
+                <h5>{{ activity.created_at }}</h5>
+            </div>
+            <div class="icons-container">
+                <a href="{% url 'task_update' pk=activity.id %}"><i class="fa fa-edit"></i></a>
+                <a href="{% url 'task_delete' pk=activity.id %}"><i class="fa fa-trash"></i></a>
+            </div>
+        </div>
+        <p>{{ activity.description }}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}
