@@ -17,11 +17,21 @@
         <label for="form1Example1">Title</label>
         {{form.title}}
       </div>
+      {% if title_error %}
+      <h6 style="color: red; margin-bottom: 1rem;">
+        {{title_error}}
+      </h6>
+      {% endif %}
 
       <div class="form-outline mb-4">
         <label for="form1Example2">Details</label>
         {{ form.description }}
       </div>
+      {% if title_error %}
+      <h6 style="color: red; margin-bottom: 1rem;">
+        {{description_error}}
+      </h6>
+      {% endif %}
       <div class="form-outline mb-4">
         {% if task %}
         {{form.completed}} Completed

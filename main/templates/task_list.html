@@ -16,6 +16,13 @@
             <div>
                 <h5>{{ activity.created_at }}</h5>
             </div>
+            <div>
+                {% if activity.completed %}
+                <h5>Status: Completed</h5>
+                {% else %}
+                <h5>Status: Incomplete</h5>
+                {% endif %}
+            </div>
             <div class="icons-container">
                 <a href="{% url 'task_update' pk=activity.id %}"><i class="fa fa-edit"></i></a>
                 <a href="{% url 'task_delete' pk=activity.id %}"><i class="fa fa-trash"></i></a>

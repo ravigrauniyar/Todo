@@ -94,3 +94,8 @@ i {
 .todoForm h1 {
     color: black;
 }
+
+.error-msg{
+    color: red;
+    margin-bottom: 1rem;
+}

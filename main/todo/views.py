@@ -23,8 +23,18 @@ class TaskCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['title_error'] = getattr(self, 'title_error', None)
         context['title'] = "Add Task"
         return context
+    
+    def form_valid(self, form):
+
+        if len(form.cleaned_data['title'])<3:
+            self.title_error = 'Title must have at least 3 characters.!'
+            return self.form_invalid(form)
+        
+        else:
+            return super().form_valid(form)
 
 task_create_url = reverse_lazy('task_create')
 
