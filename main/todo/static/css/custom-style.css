@@ -1,4 +1,8 @@
 /* GENERAL */
+body {
+    background-color: black;
+}
+
 .landingPage {
     position: absolute;
     top: 0;
@@ -9,9 +13,11 @@
     align-items: center;
     min-height: 100vh;
 }
-body{
+
+body {
     background-color: black;
 }
+
 p {
     font-size: 20px;
 }
@@ -56,6 +62,24 @@ i {
     padding: 1rem;
     position: absolute;
     top: 10vh;
+}
+
+p {
+    color: black;
+}
+
+.hidden {
+    display: none;
+}
+
+.todo-body {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s;
+}
+
+.slide-down {
+    height: 100px;
 }
 
 .todo,
