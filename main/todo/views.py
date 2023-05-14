@@ -2,6 +2,20 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Task
 
+class TodoAction():
+    
+    def create():
+        return TaskCreateView.as_view()
+    
+    def read():
+        return TaskListView.as_view()
+    
+    def update():
+        return TaskUpdateView.as_view()
+    
+    def delete():
+        return TaskDeleteView.as_view()
+
 class TaskListView(ListView):
     model = Task
     template_name = 'task_list.html'

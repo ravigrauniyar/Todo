@@ -5,14 +5,61 @@
 {% endblock %}
 
 {% block body %}
+<style>
+    .todo-container {
+        width: 50%;
+        min-height: 60vh;
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(255, 255, 255, 0.5);
+        padding: 1rem;
+        position: absolute;
+        top: 10vh;
+    }
+
+    p {
+        color: black;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .todo-body {
+        height: 0;
+        overflow: hidden;
+        transition: height 0.5s;
+    }
+
+    .slide-down {
+        height: 100px;
+    }
+</style>
 <div class="todo-container">
+    <h1>
+        Todo List
+    </h1>
     {% if not tasks %}
-    <h3>No Activities in Todo Yet.</h3>
+    <h3>
+        No Activities in Todo Yet.
+    </h3>
     {% else %}
     {% for activity in tasks %}
-    <div class="todo">
-        <h2>{{ activity.title }}</h2>
-        <div class="todo-header">
+
+    <div class="todo-header">
+        <h2>
+            {{ activity.title }}
+        </h2>
+        <div id="eye-con-{{ activity.id }}">
+            <i class="fa fa-eye" onclick="taskDetails('show', '{{ activity.id }}')"></i>
+        </div>
+        <div id="hide-con-{{ activity.id }}" class="hidden">
+            <i class="fa fa-eye-slash" onclick=" taskDetails('hide', '{{ activity.id }}' )"></i>
+        </div>
+    </div>
+    <div id="todo-body-{{ activity.id }}" class="todo-body">
+
+        <div id="task_details" class="todo">
             <div>
                 <h5>{{ activity.created_at }}</h5>
             </div>
@@ -33,5 +80,4 @@
     {% endfor %}
     {% endif %}
 </div>
-
 {% endblock %}

@@ -11,14 +11,17 @@
     {% else %}
     <form class="p-3" action="{% url 'task_create' %}" method="post">
       {% endif %}
+
       {% csrf_token %}
-      <h1 class="my-4">Add Activity</h1>
+      <h1 class="my-4">
+        Add Activity
+      </h1>
       <div class="form-outline mb-4">
         <label for="form1Example1">Title</label>
         {{form.title}}
       </div>
       {% if title_error %}
-      <h6 style="color: red; margin-bottom: 1rem;">
+      <h6>
         {{title_error}}
       </h6>
       {% endif %}
@@ -28,7 +31,7 @@
         {{ form.description }}
       </div>
       {% if title_error %}
-      <h6 style="color: red; margin-bottom: 1rem;">
+      <h6>
         {{description_error}}
       </h6>
       {% endif %}
@@ -37,7 +40,9 @@
         {{form.completed}} Completed
         {% endif %}
       </div>
-      <p>{{ invalidMsg }}</p>
+      <p>
+        {{ invalidMsg }}
+      </p>
       <button type="submit" class="btn btn-primary btn-block">Submit</button>
     </form>
 </div>

@@ -1,11 +1,13 @@
 from django.urls import path
-from . import views
+from .views import TodoAction
 
 urlpatterns =[
-    path('',views.TaskListView.as_view(),name='task_list'),
-    path('todos',views.TaskListView.as_view(),name='task_list'),
-    path('todo',views.TaskListView.as_view(),name='task_list'),
-    path('todo/create', views.TaskCreateView.as_view(),name='task_create'),
-    path('<int:pk>/update', views.TaskUpdateView.as_view(),name='task_update'),
-    path('<int:pk>/delete', views.TaskDeleteView.as_view(),name='task_delete'),
+    path('todo/create', TodoAction.create(),name='task_create'),
+    
+    path('',TodoAction.read(),name='task_list'),
+    path('todos',TodoAction.read(),name='task_list'),
+    path('todo',TodoAction.read(),name='task_list'),
+    
+    path('todo/<int:pk>/update', TodoAction.update(),name='task_update'),
+    path('todo/<int:pk>/delete', TodoAction.delete(),name='task_delete'),
 ]
